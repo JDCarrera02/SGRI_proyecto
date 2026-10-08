@@ -1,0 +1,38 @@
+spring.application.name=sgri
+
+# -------------------------------------------------------------
+# CONFIGURACIÓN DE CONEXIÓN A MYSQL
+# -------------------------------------------------------------
+spring.datasource.url=jdbc:mysql://db:3306/db_gestion_recursos?allowPublicKeyRetrieval=true&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=78800880
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# -------------------------------------------------------------
+# CONFIGURACIÓN DE FLYWAY (MIGRACIONES)
+# -------------------------------------------------------------
+# Activa Flyway en el proyecto
+spring.flyway.enabled=true
+
+# Especifica la ruta exacta donde Flyway buscará el archivo V1__
+spring.flyway.locations=classpath:db/migration
+
+# Activa el Baseline (Indica que la BD ya existe y tiene tablas/datos)
+# Desactivamos el baseline porque nuestra base de datos en Docker nace 100% limpia y vacía
+#spring.flyway.baseline-on-migrate=false
+
+# -------------------------------------------------------------
+# CONFIGURACIÓN DE JPA / HIBERNATE
+# -------------------------------------------------------------
+# 'validate' comprueba que las clases de Java coincidan exactamente con
+# MySQL sin modificar nada
+spring.jpa.hibernate.ddl-auto=validate
+
+# Muestra los comandos SQL reales en la consola de IntelliJ
+spring.jpa.show-sql=true
+
+# Embellecedor de SQL: Tabula y ordena las consultas para lectura humana en la consola
+spring.jpa.properties.hibernate.format_sql=true
+
+# Resalta las palabras clave de SQL (SELECT, INSERT, WHERE) con colores en la terminal
+spring.jpa.properties.hibernate.highlight_sql=true
